@@ -1,0 +1,11 @@
+D:\Projects\ConsoleBlackjack\bin\Debug\netcoreapp2.2\ConsoleBlackjack.deps.json
+D:\Projects\ConsoleBlackjack\bin\Debug\netcoreapp2.2\ConsoleBlackjack.runtimeconfig.json
+D:\Projects\ConsoleBlackjack\bin\Debug\netcoreapp2.2\ConsoleBlackjack.runtimeconfig.dev.json
+D:\Projects\ConsoleBlackjack\bin\Debug\netcoreapp2.2\ConsoleBlackjack.dll
+D:\Projects\ConsoleBlackjack\bin\Debug\netcoreapp2.2\ConsoleBlackjack.pdb
+D:\Projects\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.csprojAssemblyReference.cache
+D:\Projects\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.csproj.CoreCompileInputs.cache
+D:\Projects\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.AssemblyInfoInputs.cache
+D:\Projects\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.AssemblyInfo.cs
+D:\Projects\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.dll
+D:\Projects\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.pdb
