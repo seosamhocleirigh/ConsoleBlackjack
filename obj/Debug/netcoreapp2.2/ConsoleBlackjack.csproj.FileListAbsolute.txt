@@ -9,3 +9,14 @@ D:\Projects\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.AssemblyIn
 D:\Projects\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.AssemblyInfo.cs
 D:\Projects\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.dll
 D:\Projects\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.pdb
+C:\Users\Orkula\source\repos\ConsoleBlackjack\bin\Debug\netcoreapp2.2\ConsoleBlackjack.deps.json
+C:\Users\Orkula\source\repos\ConsoleBlackjack\bin\Debug\netcoreapp2.2\ConsoleBlackjack.runtimeconfig.json
+C:\Users\Orkula\source\repos\ConsoleBlackjack\bin\Debug\netcoreapp2.2\ConsoleBlackjack.runtimeconfig.dev.json
+C:\Users\Orkula\source\repos\ConsoleBlackjack\bin\Debug\netcoreapp2.2\ConsoleBlackjack.dll
+C:\Users\Orkula\source\repos\ConsoleBlackjack\bin\Debug\netcoreapp2.2\ConsoleBlackjack.pdb
+C:\Users\Orkula\source\repos\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.csprojAssemblyReference.cache
+C:\Users\Orkula\source\repos\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.csproj.CoreCompileInputs.cache
+C:\Users\Orkula\source\repos\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.AssemblyInfoInputs.cache
+C:\Users\Orkula\source\repos\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.AssemblyInfo.cs
+C:\Users\Orkula\source\repos\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.dll
+C:\Users\Orkula\source\repos\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.pdb

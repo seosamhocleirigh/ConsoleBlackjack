@@ -3,11 +3,16 @@ using ConsoleBlackjack.GameLogic.Interfaces;
 
 namespace ConsoleBlackjack.GameLogic.Classes
 {
-    public class Card : BaseCard
+    public class Card : ICard
     {
-        public Card(CardName cardName, Suit suit) : base(cardName, suit)
+        public Card(int[] cardValues, string cardName)
         {
-
+            CardValues = cardValues;
+            CardName = cardName;
         }
+
+        public int[] CardValues { get; private set; }
+
+        public string CardName { get; private set; }
     }
 }

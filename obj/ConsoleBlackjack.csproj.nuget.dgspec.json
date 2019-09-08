@@ -1,26 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\ConsoleBlackjack\\ConsoleBlackjack.csproj": {}
+    "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\ConsoleBlackjack.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\ConsoleBlackjack\\ConsoleBlackjack.csproj": {
+    "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\ConsoleBlackjack.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\ConsoleBlackjack\\ConsoleBlackjack.csproj",
+        "projectUniqueName": "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\ConsoleBlackjack.csproj",
         "projectName": "ConsoleBlackjack",
-        "projectPath": "D:\\Projects\\ConsoleBlackjack\\ConsoleBlackjack.csproj",
-        "packagesPath": "C:\\Users\\orkula\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\ConsoleBlackjack\\obj\\",
+        "projectPath": "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\ConsoleBlackjack.csproj",
+        "packagesPath": "C:\\Users\\Orkula\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\orkula\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Orkula\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleBlackjack.GameLogic.Classes;
+using System;
 
 namespace ConsoleBlackjack
 {
@@ -6,9 +7,12 @@ namespace ConsoleBlackjack
     {
         static void Main(string[] args)
         {
+            var cf = new DeckFactory();
+            cf.GenerateDeck();
+
             Console.WriteLine("Press ESC to stop");
             do {
-                while (! Console.KeyAvailable) {
+                while (!Console.KeyAvailable) {
                     // Do something
                 }       
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);   
