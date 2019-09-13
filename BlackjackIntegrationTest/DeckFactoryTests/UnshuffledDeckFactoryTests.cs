@@ -1,6 +1,5 @@
 using ConsoleBlackjack.GameLogic.Classes;
 using Shouldly;
-using System;
 using System.Linq;
 using Xunit;
 
