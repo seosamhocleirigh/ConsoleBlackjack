@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\ConsoleBlackjack.csproj",
+      "projectUniqueName": "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\src\\ConsoleBlackjack\\ConsoleBlackjack.csproj",
       "projectName": "ConsoleBlackjack",
-      "projectPath": "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\ConsoleBlackjack.csproj",
+      "projectPath": "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\src\\ConsoleBlackjack\\ConsoleBlackjack.csproj",
       "packagesPath": "C:\\Users\\Orkula\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\obj\\",
+      "outputPath": "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\src\\ConsoleBlackjack\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
