@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleBlackjack\ConsoleBlackjack.csproj" />
+    <ProjectReference Include="..\src\ConsoleBlackjack\ConsoleBlackjack.csproj" />
   </ItemGroup>
 
 </Project>

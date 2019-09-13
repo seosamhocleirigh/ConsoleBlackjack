@@ -1688,6 +1688,16 @@
         "build": {
           "build/netcoreapp1.0/xunit.runner.visualstudio.props": {}
         }
+      },
+      "ConsoleBlackjack/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/ConsoleBlackjack.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ConsoleBlackjack.dll": {}
+        }
       }
     }
   },
@@ -5899,11 +5909,16 @@
         "xunit.runner.visualstudio.2.4.0.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "ConsoleBlackjack/1.0.0": {
+      "type": "project",
+      "path": "../src/ConsoleBlackjack/ConsoleBlackjack.csproj",
+      "msbuildProject": "../src/ConsoleBlackjack/ConsoleBlackjack.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
-      "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\ConsoleBlackjack\\ConsoleBlackjack.csproj",
+      "ConsoleBlackjack >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.0.1",
       "Microsoft.NETCore.App >= 2.2.0",
       "Shouldly >= 3.0.2",
@@ -5941,8 +5956,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\ConsoleBlackjack\\ConsoleBlackjack.csproj": {
-              "projectPath": "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\ConsoleBlackjack\\ConsoleBlackjack.csproj"
+            "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\src\\ConsoleBlackjack\\ConsoleBlackjack.csproj": {
+              "projectPath": "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\src\\ConsoleBlackjack\\ConsoleBlackjack.csproj"
             }
           }
         }
@@ -5986,16 +6001,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\ConsoleBlackjack\\ConsoleBlackjack.csproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "C:\\Users\\Orkula\\source\\repos\\ConsoleBlackjack\\ConsoleBlackjack\\ConsoleBlackjack.csproj",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.2"
-      ]
-    }
-  ]
+  }
 }
