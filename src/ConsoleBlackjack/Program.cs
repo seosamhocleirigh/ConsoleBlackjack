@@ -7,7 +7,7 @@ namespace ConsoleBlackjack
     {
         static void Main(string[] args)
         {
-            var cf = new DeckFactory();
+            var cf = new BlackjackCardDeckFactory();
             cf.GenerateDeck();
 
             Console.WriteLine("Press ESC to stop");

@@ -1,8 +1,7 @@
 ﻿namespace ConsoleBlackjack.GameLogic.Interfaces
 {
-    public interface IDeck
+    public interface IDealer
     {
-        void AddCard(ICard card);
         ICard DrawTopCard();
         void Shuffle();
     }

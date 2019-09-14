@@ -4,12 +4,12 @@ using ConsoleBlackjack.GameLogic.Extensions;
 
 namespace ConsoleBlackjack.GameLogic.Classes
 {
-    public class DeckFactory
+    public class BlackjackCardDeckFactory
     {
         // TODO: need generic way to allow words to be numbers
-        public Deck GenerateDeck()
+        public BlackjackCardDeck GenerateDeck()
         {
-            var deck = new Deck();
+            var deck = new BlackjackCardDeck();
             var cardSuits = EnumExtensions.GetValues<CardSuit>();
             var cardValues = EnumExtensions.GetValues<CardType>();
 
@@ -17,51 +17,51 @@ namespace ConsoleBlackjack.GameLogic.Classes
             {
                 foreach (var cardValue in cardValues)
                 {
-                    Card card;
+                    FrenchCard card;
                     var cardName = $"{cardValue} of {cardSuit}";
 
                     switch (cardValue)
                     {
                         case CardType.Ace:
-                            card = new Card(new int[] { 1, 11 }, cardName);
+                            card = new FrenchCard(new int[] { 1, 11 }, cardName);
                             break;
                         case CardType.Two:
-                            card = new Card(new int[] { 2 }, cardName);
+                            card = new FrenchCard(new int[] { 2 }, cardName);
                             break;
                         case CardType.Three:
-                            card = new Card(new int[] { 3 }, cardName);
+                            card = new FrenchCard(new int[] { 3 }, cardName);
                             break;
                         case CardType.Four:
-                            card = new Card(new int[] { 4 }, cardName);
+                            card = new FrenchCard(new int[] { 4 }, cardName);
                             break;
                         case CardType.Five:
-                            card = new Card(new int[] { 5 }, cardName);
+                            card = new FrenchCard(new int[] { 5 }, cardName);
                             break;
                         case CardType.Six:
-                            card = new Card(new int[] { 6 }, cardName);
+                            card = new FrenchCard(new int[] { 6 }, cardName);
                             break;
                         case CardType.Seven:
-                            card = new Card(new int[] { 7 }, cardName);
+                            card = new FrenchCard(new int[] { 7 }, cardName);
                             break;
                         case CardType.Eight:
-                            card = new Card(new int[] { 8 }, cardName);
+                            card = new FrenchCard(new int[] { 8 }, cardName);
                             break;
                         case CardType.Nine:
-                            card = new Card(new int[] { 9 }, cardName);
+                            card = new FrenchCard(new int[] { 9 }, cardName);
                             break;
                         case CardType.Ten:
-                            card = new Card(new int[] { 10 }, cardName);
+                            card = new FrenchCard(new int[] { 10 }, cardName);
                             break;
                         case CardType.Jack:
                         case CardType.Queen:
                         case CardType.King:
-                            card = new Card(new int[] { 10 }, cardName);
+                            card = new FrenchCard(new int[] { 10 }, cardName);
                             break;
                         default:
                             throw new Exception("Card could not be generated");
                     }
 
-                    deck.AddCard(card);
+                    deck.Add(card);
                 }
             }
 
