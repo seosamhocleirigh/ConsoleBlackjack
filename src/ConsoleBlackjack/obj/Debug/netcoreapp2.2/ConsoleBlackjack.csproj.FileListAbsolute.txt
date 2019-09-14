@@ -30,3 +30,4 @@ C:\Users\Orkula\source\repos\ConsoleBlackjack\src\ConsoleBlackjack\obj\Debug\net
 C:\Users\Orkula\source\repos\ConsoleBlackjack\src\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.AssemblyInfo.cs
 C:\Users\Orkula\source\repos\ConsoleBlackjack\src\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.dll
 C:\Users\Orkula\source\repos\ConsoleBlackjack\src\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.pdb
+C:\Users\Orkula\source\repos\ConsoleBlackjack\src\ConsoleBlackjack\obj\Debug\netcoreapp2.2\ConsoleBlackjack.csprojAssemblyReference.cache
