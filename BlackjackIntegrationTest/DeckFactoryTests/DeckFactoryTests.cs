@@ -2,17 +2,16 @@ using ConsoleBlackjack.GameLogic.Classes;
 using ConsoleBlackjack.GameLogic.Common.FrenchCardEnums;
 using Shouldly;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace BlackjackIntegrationTest.CardFactoryTests
+namespace BlackjackIntegrationTest.DeckFactoryTests
 {
-    public sealed class UnshuffledDeckFactoryTests
+    public sealed class DeckFactoryTests
     {
         private BlackjackCardDeck _generatedDeck;
 
-        public UnshuffledDeckFactoryTests()
+        public DeckFactoryTests()
         {
             var cardFactory = new BlackjackCardDeckFactory();
             _generatedDeck = cardFactory.GenerateDeck();
