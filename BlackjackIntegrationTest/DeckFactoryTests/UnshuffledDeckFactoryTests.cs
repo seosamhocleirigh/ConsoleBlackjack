@@ -1,5 +1,8 @@
 using ConsoleBlackjack.GameLogic.Classes;
+using ConsoleBlackjack.GameLogic.Common.FrenchCardEnums;
 using Shouldly;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -46,16 +49,24 @@ namespace BlackjackIntegrationTest.CardFactoryTests
             var doubleValueCards = _generatedDeck.Where(d => d.CardValues.Count() == 2);
 
             doubleValueCards.Count().ShouldBe(4);
-            doubleValueCards.Count(d => d.CardName.Equals("Ace of Diamonds", System.StringComparison.Ordinal)).ShouldBe(1);
-            doubleValueCards.Count(d => d.CardName.Equals("Ace of Hearts", System.StringComparison.Ordinal)).ShouldBe(1);
-            doubleValueCards.Count(d => d.CardName.Equals("Ace of Spades", System.StringComparison.Ordinal)).ShouldBe(1);
-            doubleValueCards.Count(d => d.CardName.Equals("Ace of Clubs", System.StringComparison.Ordinal)).ShouldBe(1);
+            doubleValueCards.Count(d => d.CardName.Equals("Ace of Diamonds", StringComparison.Ordinal)).ShouldBe(1);
+            doubleValueCards.Count(d => d.CardName.Equals("Ace of Hearts", StringComparison.Ordinal)).ShouldBe(1);
+            doubleValueCards.Count(d => d.CardName.Equals("Ace of Spades", StringComparison.Ordinal)).ShouldBe(1);
+            doubleValueCards.Count(d => d.CardName.Equals("Ace of Clubs", StringComparison.Ordinal)).ShouldBe(1);
         }
 
         [Fact]
         public void CardFactory_SingleValueCards_DescriptionTest()
         {
+            var preposition = "of";
 
+            foreach (var cardSuit in Enum.GetValues(typeof(CardSuit)))
+            {
+                foreach (var cardType in Enum.GetValues(typeof(CardType)))
+                {
+                    _generatedDeck.Count(card => card.CardName == $"{cardType} {preposition} {cardSuit}").ShouldBe(1);
+                }
+            }
         }
     }
 }
