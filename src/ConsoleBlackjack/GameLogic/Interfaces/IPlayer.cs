@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ConsoleBlackjack.GameLogic.Interfaces
+﻿namespace ConsoleBlackjack.GameLogic.Interfaces
 {
     public interface IPlayer
     {

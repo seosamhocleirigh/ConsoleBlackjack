@@ -1,13 +1,15 @@
 ﻿using ConsoleBlackjack.GameLogic.Common.FrenchCardEnums;
 using System;
 using ConsoleBlackjack.GameLogic.Extensions;
+using ConsoleBlackjack.GameLogic.Interfaces;
+using System.Collections.Generic;
 
 namespace ConsoleBlackjack.GameLogic.Classes
 {
-    public class BlackjackCardDeckFactory
+    public class BlackjackCardDeckFactory : IDeckFactory<FrenchCard>
     {
         // TODO: need generic way to allow words to be numbers
-        public BlackjackCardDeck GenerateDeck()
+        public IList<FrenchCard> GenerateDeck()
         {
             var deck = new BlackjackCardDeck();
             var cardSuits = EnumExtensions.GetValues<CardSuit>();

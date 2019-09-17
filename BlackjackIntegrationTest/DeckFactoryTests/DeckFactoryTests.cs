@@ -2,6 +2,7 @@ using ConsoleBlackjack.GameLogic.Classes;
 using ConsoleBlackjack.GameLogic.Common.FrenchCardEnums;
 using Shouldly;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -9,7 +10,7 @@ namespace BlackjackIntegrationTest.DeckFactoryTests
 {
     public sealed class DeckFactoryTests
     {
-        private BlackjackCardDeck _generatedDeck;
+        private IList<FrenchCard> _generatedDeck;
 
         public DeckFactoryTests()
         {
