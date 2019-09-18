@@ -57,7 +57,6 @@ namespace BlackjackIntegrationTest.BlackjackDealerTests
         [Fact]
         public void Dealer_TakeBet_Test()
         {
-            var generatedDeck = _cardFactory.GenerateDeck();
             var dealer = new BlackjackDealer(_cardFactory);
             var betAmount = 99.99;
 

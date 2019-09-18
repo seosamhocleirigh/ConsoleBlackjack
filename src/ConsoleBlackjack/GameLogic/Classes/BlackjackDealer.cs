@@ -6,8 +6,6 @@ namespace ConsoleBlackjack.GameLogic.Classes
 {
     public class BlackjackDealer : BaseDealer<FrenchCard>
     {
-        public double Bet { get; set; }
-        
         public BlackjackDealer(IDeckFactory<FrenchCard> deckFactory) : base(deckFactory)
         {
 

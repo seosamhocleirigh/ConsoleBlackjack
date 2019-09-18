@@ -4,7 +4,7 @@ namespace ConsoleBlackjack.GameLogic.Interfaces
 {
     public abstract class BaseDealer<ICard>
     {
-        public double Bet { private get; set; }
+        public double Bet { get; protected set; }
         public IList<ICard> CardDeck { get; protected set; }
         private IDeckFactory<ICard> _deckFactory;
 
