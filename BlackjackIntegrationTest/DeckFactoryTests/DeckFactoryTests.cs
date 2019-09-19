@@ -49,10 +49,10 @@ namespace BlackjackIntegrationTest.DeckFactoryTests
             var doubleValueCards = _generatedDeck.Where(d => d.CardValues.Count() == 2);
 
             doubleValueCards.Count().ShouldBe(4);
-            doubleValueCards.Count(d => d.CardName.Equals("Ace of Diamonds", StringComparison.Ordinal)).ShouldBe(1);
-            doubleValueCards.Count(d => d.CardName.Equals("Ace of Hearts", StringComparison.Ordinal)).ShouldBe(1);
-            doubleValueCards.Count(d => d.CardName.Equals("Ace of Spades", StringComparison.Ordinal)).ShouldBe(1);
-            doubleValueCards.Count(d => d.CardName.Equals("Ace of Clubs", StringComparison.Ordinal)).ShouldBe(1);
+            doubleValueCards.Count(d => d.CardFaceUpName.Equals("Ace of Diamonds", StringComparison.Ordinal)).ShouldBe(1);
+            doubleValueCards.Count(d => d.CardFaceUpName.Equals("Ace of Hearts", StringComparison.Ordinal)).ShouldBe(1);
+            doubleValueCards.Count(d => d.CardFaceUpName.Equals("Ace of Spades", StringComparison.Ordinal)).ShouldBe(1);
+            doubleValueCards.Count(d => d.CardFaceUpName.Equals("Ace of Clubs", StringComparison.Ordinal)).ShouldBe(1);
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace BlackjackIntegrationTest.DeckFactoryTests
             {
                 foreach (var cardType in Enum.GetValues(typeof(CardType)))
                 {
-                    _generatedDeck.Count(card => card.CardName == $"{cardType} {preposition} {cardSuit}").ShouldBe(1);
+                    _generatedDeck.Count(card => card.CardFaceUpName == $"{cardType} {preposition} {cardSuit}").ShouldBe(1);
                 }
             }
         }

@@ -23,7 +23,7 @@ namespace BlackjackIntegrationTest.BlackjackDealerTests
 
             dealer.CardDeck.Count.ShouldBe(52);
 
-            var firstFourCardTypes = dealer.CardDeck.Take(4).Select(c => c.CardName.Split(" ").First());
+            var firstFourCardTypes = dealer.CardDeck.Take(4).Select(c => c.CardFaceUpName.Split(" ").First());
             string.Join(',', firstFourCardTypes).ShouldNotBe("Ace,Two,Three,Four");
         }
 

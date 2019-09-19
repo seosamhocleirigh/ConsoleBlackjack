@@ -9,6 +9,8 @@ namespace ConsoleBlackjack
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.Title = "♠♥♣♦ Blackjack ♠♥♣♦";
             // TODO: create game in simple format here
             // TODO: write a consoleoutput engine to help write messages to console, including displaying cards, card face up/down etc
             // TODO: write a class that give a game intro, manual, how to play etc
@@ -17,6 +19,7 @@ namespace ConsoleBlackjack
             var dealer = new BlackjackDealer(deckFactory);
 
             Console.WriteLine("Press Control + C to exit at any time");
+
             while (true)
             {
                 Console.WriteLine("Place your bet amount:");
@@ -44,10 +47,9 @@ namespace ConsoleBlackjack
                     dealer.DealCard()
                 };
 
-
                 // TODO: card face down needs to be done
-                Console.WriteLine("The dealer has dealt you: " + string.Join(',', listPlayerCards.Select(card => card.CardName)));
-                Console.WriteLine("The dealer has dealt himself: " + string.Join(',', listDealerCards.Select(card => card.CardName)));
+                Console.WriteLine("The dealer has dealt you: " + string.Join(',', listPlayerCards.Select(card => card.CardFaceUpName)));
+                Console.WriteLine("The dealer has dealt himself: " + string.Join(',', listDealerCards.Select(card => card.CardFaceUpName)));
                 Console.WriteLine("Hit[h] or stay[s]?");
 
                 var playersInput = "";
@@ -60,7 +62,7 @@ namespace ConsoleBlackjack
                 if (playersInput == "h")
                 {
                     listPlayerCards.Add(dealer.DealCard());
-                    Console.WriteLine("Your cards are: " + string.Join(',', listPlayerCards.Select(card => card.CardName)));
+                    Console.WriteLine("Your cards are: " + string.Join(',', listPlayerCards.Select(card => card.CardFaceUpName)));
                 }
             }
 

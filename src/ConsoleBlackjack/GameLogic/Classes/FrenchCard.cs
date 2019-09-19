@@ -8,11 +8,13 @@ namespace ConsoleBlackjack.GameLogic.Classes
         public FrenchCard(int[] cardValues, string cardName)
         {
             CardValues = cardValues;
-            CardName = cardName;
+            CardFaceUpName = cardName;
         }
 
         public int[] CardValues { get; private set; }
 
-        public string CardName { get; private set; }
+        public string CardFaceUpName { get; private set; }
+
+        public string CardFaceDownText => "X";
     }
 }

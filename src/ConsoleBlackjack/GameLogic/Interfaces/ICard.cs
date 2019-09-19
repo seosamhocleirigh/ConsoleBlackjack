@@ -3,6 +3,7 @@
     public interface ICard
     {
         int[] CardValues { get; }
-        string CardName { get; }
+        string CardFaceUpName { get; }
+        string CardFaceDownText { get; }
     }
 }
