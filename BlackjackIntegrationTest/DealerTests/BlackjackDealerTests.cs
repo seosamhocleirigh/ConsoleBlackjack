@@ -23,8 +23,24 @@ namespace BlackjackIntegrationTest.BlackjackDealerTests
 
             dealer.CardDeck.Count.ShouldBe(52);
 
-            var firstFourCardTypes = dealer.CardDeck.Take(4).Select(c => c.CardFaceUpName.Split(" ").First());
+            var firstFourCardTypes = dealer.CardDeck.Take(4).Select(c => c.CardFace.Split(" ").First());
             string.Join(',', firstFourCardTypes).ShouldNotBe("Ace,Two,Three,Four");
+        }
+
+        [Fact]
+        public void Dealer_SetCardFaceUp_Test()
+        {
+            var dealer = new BlackjackDealer(_cardFactory);
+            dealer.GetNewCardDeck();
+
+            var card = dealer.DealCard(faceUp: false);
+
+            card.ShouldNotBeNull();
+            card.IsCardFaceUp.ShouldBeFalse();
+            card.CurrentCardAspect.ShouldBe(card.CardBack);
+
+            card.IsCardFaceUp = true;
+            card.CurrentCardAspect.ShouldBe(card.CardFace);
         }
 
         [Fact]
@@ -34,7 +50,7 @@ namespace BlackjackIntegrationTest.BlackjackDealerTests
 
             dealer.GetNewCardDeck();
             var expectedCard = dealer.CardDeck.First();
-            var card = dealer.DealCard();
+            var card = dealer.DealCard(faceUp: true);
 
             card.ShouldNotBeNull();
             card.ShouldBeOfType<FrenchCard>();
@@ -42,13 +58,13 @@ namespace BlackjackIntegrationTest.BlackjackDealerTests
             dealer.CardDeck.Count.ShouldBe(51);
 
             expectedCard = dealer.CardDeck.First();
-            card = dealer.DealCard();
+            card = dealer.DealCard(faceUp: true);
             card.ShouldBeOfType<FrenchCard>();
             card.ShouldBeSameAs(expectedCard);
             dealer.CardDeck.Count.ShouldBe(50);
 
             expectedCard = dealer.CardDeck.First();
-            card = dealer.DealCard();
+            card = dealer.DealCard(faceUp: true);
             card.ShouldBeOfType<FrenchCard>();
             card.ShouldBeSameAs(expectedCard);
             dealer.CardDeck.Count.ShouldBe(49);

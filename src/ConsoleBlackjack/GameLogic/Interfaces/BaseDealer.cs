@@ -14,7 +14,7 @@ namespace ConsoleBlackjack.GameLogic.Interfaces
         public void GetNewCardDeck() => CardDeck = _deckFactory.GenerateDeck();
 
         public abstract void ShuffleDeck();
-        public abstract ICard DealCard();
+        public abstract ICard DealCard(bool faceUp);
         public abstract void TakeBet(double betAmount);
         // TODO: winnings will be paid on rules, those rules should be defined and explained to user on load and probably should become a dependancy for the dealer
         public abstract double PayoutWinnings();

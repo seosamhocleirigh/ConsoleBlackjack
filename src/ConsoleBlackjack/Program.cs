@@ -37,19 +37,19 @@ namespace ConsoleBlackjack
                 // deal player 2 cards
                 var listPlayerCards = new List<FrenchCard>
                 {
-                    dealer.DealCard(),
-                    dealer.DealCard()
+                    dealer.DealCard(faceUp: true),
+                    dealer.DealCard(faceUp: true)
                 };
 
                 var listDealerCards = new List<FrenchCard>
                 {
-                    dealer.DealCard(),
-                    dealer.DealCard()
+                    dealer.DealCard(faceUp: true),
+                    dealer.DealCard(faceUp: false)
                 };
 
                 // TODO: card face down needs to be done
-                Console.WriteLine("The dealer has dealt you: " + string.Join(',', listPlayerCards.Select(card => card.CardFaceUpName)));
-                Console.WriteLine("The dealer has dealt himself: " + string.Join(',', listDealerCards.Select(card => card.CardFaceUpName)));
+                Console.WriteLine("The dealer has dealt you: " + string.Join(',', listPlayerCards.Select(card => card.CurrentCardAspect)));
+                Console.WriteLine("The dealer has dealt himself: " + string.Join(',', listDealerCards.Select(card => card.CurrentCardAspect)));
                 Console.WriteLine("Hit[h] or stay[s]?");
 
                 var playersInput = "";
@@ -61,8 +61,8 @@ namespace ConsoleBlackjack
 
                 if (playersInput == "h")
                 {
-                    listPlayerCards.Add(dealer.DealCard());
-                    Console.WriteLine("Your cards are: " + string.Join(',', listPlayerCards.Select(card => card.CardFaceUpName)));
+                    listPlayerCards.Add(dealer.DealCard(faceUp: true));
+                    Console.WriteLine("Your cards are: " + string.Join(',', listPlayerCards.Select(card => card.CardFace)));
                 }
             }
 

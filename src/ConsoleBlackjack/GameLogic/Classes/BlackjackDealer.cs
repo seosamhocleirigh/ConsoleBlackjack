@@ -27,7 +27,7 @@ namespace ConsoleBlackjack.GameLogic.Classes
             CardDeck = shuffledCardDeck;
         }
 
-        public override FrenchCard DealCard()
+        public override FrenchCard DealCard(bool faceUp)
         {
             var card = CardDeck.First();
             CardDeck.Remove(card);
