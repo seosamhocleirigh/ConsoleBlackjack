@@ -62,6 +62,26 @@ namespace ConsoleBlackjack
                 if (playersInput == "h")
                 {
                     listPlayerCards.Add(dealer.DealCard(faceUp: true));
+
+                    if (listPlayerCards.Sum(c => c.CardValues.Sum()) > 21)
+                    {
+                        Console.WriteLine("You are bust °º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸");
+                        Console.WriteLine("Would you like to make another bet? [y]es or [n]o");
+                        playersInput = Console.ReadLine();
+
+                        while (playersInput != "y" && playersInput != "n")
+                        {
+                            playersInput = Console.ReadLine();
+                        }
+
+                        if (playersInput == "y")
+                        {
+                            continue;
+                        }
+
+                        break;
+                    }
+
                     Console.WriteLine("Your cards are: " + string.Join(',', listPlayerCards.Select(card => card.CardFace)));
                 }
             }
