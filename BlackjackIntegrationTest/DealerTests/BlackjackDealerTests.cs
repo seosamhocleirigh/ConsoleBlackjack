@@ -41,6 +41,25 @@ namespace BlackjackIntegrationTest.BlackjackDealerTests
 
             card.IsCardFaceUp = true;
             card.CurrentCardAspect.ShouldBe(card.CardFace);
+
+            card = dealer.DealCard(faceUp: true);
+            card.IsCardFaceUp.ShouldBeTrue();
+            card.CurrentCardAspect.ShouldBe(card.CardFace);
+        }
+
+        [Fact]
+        public void Dealer_TurnCard_Test()
+        {
+            var dealer = new BlackjackDealer(_cardFactory);
+
+            dealer.GetNewCardDeck();
+
+            var card = dealer.DealCard(faceUp: false);
+            dealer.TurnCardFaceUp(ref card);
+            card.IsCardFaceUp.ShouldBeTrue();
+
+            dealer.TurnCardFaceDown(ref card);
+            card.IsCardFaceUp.ShouldBeFalse();
         }
 
         [Fact]

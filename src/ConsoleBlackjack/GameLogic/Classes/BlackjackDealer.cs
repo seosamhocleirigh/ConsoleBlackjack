@@ -31,8 +31,13 @@ namespace ConsoleBlackjack.GameLogic.Classes
         {
             var card = CardDeck.First();
             CardDeck.Remove(card);
+            card.IsCardFaceUp = faceUp;
             return card;
         }
+
+        public override void TurnCardFaceUp(ref FrenchCard card) => card.IsCardFaceUp = true;
+
+        public override void TurnCardFaceDown(ref FrenchCard card) => card.IsCardFaceUp = false;
 
         public override void TakeBet(double betAmount) => Bet = betAmount;
 

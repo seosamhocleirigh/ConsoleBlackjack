@@ -18,7 +18,6 @@ namespace ConsoleBlackjack.GameLogic.Classes
                 foreach (var cardValue in cardTypes)
                 {
                     FrenchCard card;
-                    var cardName = $"{cardValue} of {cardSuit}";
 
                     switch (cardValue)
                     {
