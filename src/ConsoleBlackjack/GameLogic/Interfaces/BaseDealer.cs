@@ -4,7 +4,6 @@ namespace ConsoleBlackjack.GameLogic.Interfaces
 {
     public abstract class BaseDealer<ICard>
     {
-        // TODO: add method to deal more than 1 card
         public double Bet { get; protected set; }
         public IList<ICard> CardDeck { get; protected set; }
         private IDeckFactory<ICard> _deckFactory;
@@ -15,6 +14,7 @@ namespace ConsoleBlackjack.GameLogic.Interfaces
 
         public abstract void ShuffleDeck();
         public abstract ICard DealCard(bool faceUp);
+        public abstract IList<ICard> DealCards(int numberOfCards, bool faceUp);
         public abstract void TurnCardFaceUp(ref ICard card);
         public abstract void TurnCardFaceDown(ref ICard card);
         public abstract void TakeBet(double betAmount);

@@ -1,5 +1,6 @@
 ﻿using ConsoleBlackjack.GameLogic.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ConsoleBlackjack.GameLogic.Classes
@@ -33,6 +34,16 @@ namespace ConsoleBlackjack.GameLogic.Classes
             CardDeck.Remove(card);
             card.IsCardFaceUp = faceUp;
             return card;
+        }
+
+        public override IList<FrenchCard> DealCards(int numberOfCards, bool faceUp)
+        {
+            var dealtCards = new List<FrenchCard>();
+
+            for (int i = 0; i < numberOfCards; i++)
+                dealtCards.Add(DealCard(faceUp));
+
+            return dealtCards;
         }
 
         public override void TurnCardFaceUp(ref FrenchCard card) => card.IsCardFaceUp = true;

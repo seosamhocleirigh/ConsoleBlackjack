@@ -1,6 +1,7 @@
 ﻿using ConsoleBlackjack.GameLogic.Classes;
 using Moq;
 using Shouldly;
+using System;
 using System.Linq;
 using Xunit;
 
@@ -60,6 +61,25 @@ namespace BlackjackIntegrationTest.BlackjackDealerTests
 
             dealer.TurnCardFaceDown(ref card);
             card.IsCardFaceUp.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void Dealer_DealCards_Test()
+        {
+            var dealer = new BlackjackDealer(_cardFactory);
+
+            dealer.GetNewCardDeck();
+            var random = new Random();
+
+            var cardsToDeal = random.Next(26);
+            var cards = dealer.DealCards(cardsToDeal, false);
+            cards.Count.ShouldBe(cardsToDeal);
+            cards.All(c => !c.IsCardFaceUp).ShouldBeTrue();
+
+            cardsToDeal = random.Next(26);
+            cards = dealer.DealCards(cardsToDeal, true);
+            cards.Count.ShouldBe(cardsToDeal);
+            cards.All(c => c.IsCardFaceUp).ShouldBeTrue();
         }
 
         [Fact]

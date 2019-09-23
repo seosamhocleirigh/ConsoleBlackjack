@@ -35,11 +35,7 @@ namespace ConsoleBlackjack
                 dealer.ShuffleDeck();
 
                 // deal player 2 cards
-                var listPlayerCards = new List<FrenchCard>
-                {
-                    dealer.DealCard(faceUp: true),
-                    dealer.DealCard(faceUp: true)
-                };
+                var listPlayerCards = dealer.DealCards(2, true);
 
                 var listDealerCards = new List<FrenchCard>
                 {
