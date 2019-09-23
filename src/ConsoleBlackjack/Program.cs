@@ -47,7 +47,6 @@ namespace ConsoleBlackjack
                     dealer.DealCard(faceUp: false)
                 };
 
-                // TODO: card face down needs to be done
                 Console.WriteLine("The dealer has dealt you: " + string.Join(',', listPlayerCards.Select(card => card.CurrentCardAspect)));
                 Console.WriteLine("The dealer has dealt himself: " + string.Join(',', listDealerCards.Select(card => card.CurrentCardAspect)));
                 Console.WriteLine("Hit[h] or stay[s]?");
