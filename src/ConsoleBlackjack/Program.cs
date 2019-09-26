@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace ConsoleBlackjack
 {
@@ -22,13 +23,8 @@ namespace ConsoleBlackjack
 
             while (true)
             {
-                Console.WriteLine("Place your bet amount:");
-                double betAmount;
-
-                while (!double.TryParse(Console.ReadLine(), out betAmount))
-                {
-                    Console.WriteLine("Place a valid bet amount:");
-                }
+                var playersInput = "";
+                double betAmount = AskForBetAmount();
 
                 dealer.TakeBet(betAmount);
                 dealer.GetNewCardDeck();
@@ -43,49 +39,89 @@ namespace ConsoleBlackjack
                     dealer.DealCard(faceUp: false)
                 };
 
-                Console.WriteLine("The dealer has dealt you: " + string.Join(',', listPlayerCards.Select(card => card.CurrentCardAspect)));
-                Console.WriteLine("The dealer has dealt himself: " + string.Join(',', listDealerCards.Select(card => card.CurrentCardAspect)));
-                Console.WriteLine("Hit[h] or stay[s]?");
+                Console.WriteLine("The dealer's cards are: " + string.Join(',', listDealerCards.Select(card => card.CurrentCardAspect)));
 
-                var playersInput = "";
-
-                while (playersInput != "h" && playersInput != "s")
+                while (listPlayerCards.Sum(c => c.CardValues.Sum()) < 21 && playersInput != "s")
                 {
-                    playersInput = Console.ReadLine();
+                    Console.WriteLine("Your cards are: " + string.Join(',', listPlayerCards.Select(card => card.CardFace)));
+                    playersInput = OfferPlayerAChoiceAndGetInput("[h]it or [s]tay?");
+
+                    if (playersInput == "h")
+                    {
+                        listPlayerCards.Add(dealer.DealCard(faceUp: true));
+                    }
                 }
 
-                if (playersInput == "h")
+                if (listPlayerCards.Sum(c => c.CardValues.Sum()) > 21)
                 {
-                    listPlayerCards.Add(dealer.DealCard(faceUp: true));
+                    Console.WriteLine("You are bust °º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸");
 
-                    if (listPlayerCards.Sum(c => c.CardValues.Sum()) > 21)
+                    playersInput = OfferPlayerAChoiceAndGetInput("Would you like to make another bet? [y]es or [n]o");
+
+                    if (playersInput == "y")
                     {
-                        Console.WriteLine("You are bust °º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸");
-                        Console.WriteLine("Would you like to make another bet? [y]es or [n]o");
-                        playersInput = Console.ReadLine();
-
-                        while (playersInput != "y" && playersInput != "n")
-                        {
-                            playersInput = Console.ReadLine();
-                        }
-
-                        if (playersInput == "y")
-                        {
-                            continue;
-                        }
-
-                        break;
+                        continue;
                     }
 
-                    Console.WriteLine("Your cards are: " + string.Join(',', listPlayerCards.Select(card => card.CardFace)));
+                    break;
                 }
+
+                // engage dealer
+                listDealerCards.Single(c => !c.IsCardFaceUp).IsCardFaceUp = true;
+                Console.WriteLine("The dealer's cards are: " + string.Join(',', listDealerCards.Select(card => card.CurrentCardAspect)));
             }
 
             //do {
             //    while (!Console.KeyAvailable) {
-                    
+
             //    }       
             //} while (Console.ReadKey(true).Key != ConsoleKey.Escape);   
+        }
+
+        private static double AskForBetAmount()
+        {
+            const string betPrompt = "Place your bet amount:";
+            Console.WriteLine(betPrompt);
+            double betAmount;
+
+            while (!double.TryParse(Console.ReadLine(), out betAmount))
+            {
+                Console.WriteLine(betPrompt);
+            }
+
+            return betAmount;
+        }
+
+        private static string OfferPlayerAChoiceAndGetInput(string prompt)
+        {
+            var validUserInputs = RegexStringBasedUserOptions(prompt);
+
+            Console.WriteLine(prompt);
+            var playersInput = Console.ReadLine();
+
+            while (!validUserInputs.Contains(playersInput))
+            {
+                Console.WriteLine(prompt);
+                playersInput = Console.ReadLine();
+            }
+
+            return playersInput;
+        }
+
+        private static List<string> RegexStringBasedUserOptions(string promptToUser)
+        {
+            if (!promptToUser.Contains("[") && !promptToUser.Contains("]"))
+            {
+                throw new Exception("Prompt does not contain a valid option, eg: [y]/[n]");
+            }
+
+            var regex = @"\[\S*\]";
+            var matches = Regex.Matches(promptToUser, regex);
+
+            var matchList = matches.Cast<Match>().Select(match => match.Value).ToList();
+            var validOptions = matchList.Select(m => m.Replace("[", "").Replace("]", "")).ToList();
+
+            return validOptions;
         }
     }
 }
