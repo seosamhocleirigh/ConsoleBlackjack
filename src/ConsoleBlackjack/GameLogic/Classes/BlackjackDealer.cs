@@ -17,7 +17,7 @@ namespace ConsoleBlackjack.GameLogic.Classes
             var randomNumberGenerator = new Random();
             var shuffledCardDeck = new BlackjackCardDeck();
 
-            while (CardDeck.Count > 0)
+            while (CardDeck.Any())
             {
                 var cardPosition = randomNumberGenerator.Next(CardDeck.Count);
                 var randomCard = CardDeck.ElementAt(cardPosition);

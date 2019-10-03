@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace ConsoleBlackjack
 {
@@ -15,15 +16,15 @@ namespace ConsoleBlackjack
             // TODO: create game in simple format here
             // TODO: write a consoleoutput engine to help write messages to console, including displaying cards, card face up/down etc
             // TODO: write a class that give a game intro, manual, how to play etc
+            // TODO: sum logic for ace when sum goes over 21
 
             var deckFactory = new BlackjackCardDeckFactory();
             var dealer = new BlackjackDealer(deckFactory);
 
-            Console.WriteLine("Press Control + C to exit at any time");
+            var playersInput = "y";
 
-            while (true)
+            while (playersInput == "y")
             {
-                var playersInput = "";
                 double betAmount = AskForBetAmount();
 
                 dealer.TakeBet(betAmount);
@@ -32,23 +33,26 @@ namespace ConsoleBlackjack
 
                 // deal player 2 cards
                 var listPlayerCards = dealer.DealCards(2, true);
+                var sumOfPlayersCards = listPlayerCards.Sum(c => c.CardValues.Sum());
 
                 var listDealerCards = new List<FrenchCard>
                 {
                     dealer.DealCard(faceUp: true),
                     dealer.DealCard(faceUp: false)
                 };
+                var sumOfDealerCards = listDealerCards.Sum(c => c.CardValues.Sum());
 
                 Console.WriteLine("The dealer's cards are: " + string.Join(',', listDealerCards.Select(card => card.CurrentCardAspect)));
+                Console.WriteLine("Your cards are: " + string.Join(',', listPlayerCards.Select(card => card.CardFace)));
 
                 while (listPlayerCards.Sum(c => c.CardValues.Sum()) < 21 && playersInput != "s")
                 {
-                    Console.WriteLine("Your cards are: " + string.Join(',', listPlayerCards.Select(card => card.CardFace)));
                     playersInput = OfferPlayerAChoiceAndGetInput("[h]it or [s]tay?");
 
                     if (playersInput == "h")
                     {
                         listPlayerCards.Add(dealer.DealCard(faceUp: true));
+                        Console.WriteLine("Your cards are: " + string.Join(',', listPlayerCards.Select(card => card.CardFace)));
                     }
                 }
 
@@ -69,6 +73,29 @@ namespace ConsoleBlackjack
                 // engage dealer
                 listDealerCards.Single(c => !c.IsCardFaceUp).IsCardFaceUp = true;
                 Console.WriteLine("The dealer's cards are: " + string.Join(',', listDealerCards.Select(card => card.CurrentCardAspect)));
+
+                while (sumOfDealerCards < sumOfPlayersCards)
+                {
+                    Thread.Sleep(1000);
+                    Console.WriteLine("The dealer deals himself a card.");
+                    Thread.Sleep(1000);
+                    listDealerCards.Add(dealer.DealCard(true));
+                    Console.WriteLine("The dealers cards are: " + string.Join(',', listDealerCards.Select(card => card.CardFace)));
+                    sumOfDealerCards = listDealerCards.Sum(c => c.CardValues.Sum());
+                }
+
+                if (sumOfPlayersCards > sumOfDealerCards || sumOfDealerCards > 21)
+                {
+                    Console.WriteLine("You win!");
+                    // TODO: payout
+                }
+                else
+                {
+                    Console.WriteLine("The dealer wins");
+                }
+
+                Console.WriteLine($"Your current balance is: X");
+                playersInput = OfferPlayerAChoiceAndGetInput("Would you like to make another bet? [y]es or [n]o");
             }
 
             //do {
@@ -76,6 +103,19 @@ namespace ConsoleBlackjack
 
             //    }       
             //} while (Console.ReadKey(true).Key != ConsoleKey.Escape);   
+        }
+
+        public class BlackjackHand : List<FrenchCard>
+        {
+            // TODO: sum the values but treat Ace with lower value in case of bust
+            //public int Sum()
+            //{
+            //    var sum = 0;
+            //    foreach (var card in this)
+            //    {
+            //        sum += card.c
+            //    }
+            //}
         }
 
         private static double AskForBetAmount()
