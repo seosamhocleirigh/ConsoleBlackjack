@@ -1,9 +1,11 @@
 ﻿using ConsoleBlackjack.GameLogic.Classes;
+using ConsoleBlackjack.GameLogic.Common.FrenchCardEnums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Pastel;
 
 namespace ConsoleBlackjack
 {
@@ -32,33 +34,35 @@ namespace ConsoleBlackjack
                 dealer.ShuffleDeck();
 
                 // deal player 2 cards
-                var listPlayerCards = dealer.DealCards(2, true);
-                var sumOfPlayersCards = listPlayerCards.Sum(c => c.CardValues.Sum());
+                var listPlayerCards = new BlackjackHand();
+                listPlayerCards.AddRange(dealer.DealCards(2, true));
+                var sumOfPlayersCards = listPlayerCards.SumCardValues();
 
-                var listDealerCards = new List<FrenchCard>
+                var listDealerCards = new BlackjackHand();
+                listDealerCards.AddRange(new List <FrenchCard>
                 {
                     dealer.DealCard(faceUp: true),
                     dealer.DealCard(faceUp: false)
-                };
-                var sumOfDealerCards = listDealerCards.Sum(c => c.CardValues.Sum());
+                });
+                var sumOfDealerCards = listDealerCards.SumCardValues();
 
-                Console.WriteLine("The dealer's cards are: " + string.Join(',', listDealerCards.Select(card => card.CurrentCardAspect)));
-                Console.WriteLine("Your cards are: " + string.Join(',', listPlayerCards.Select(card => card.CardFace)));
+                Console.WriteLine("The dealer's cards are: " + string.Join(',', listDealerCards.Select(card => card.CurrentCardAspect)).Pastel("#1E90FF"));
+                Console.WriteLine("Your cards are: " + string.Join(',', listPlayerCards.Select(card => card.CardFace)).Pastel("#ff59c7"));
 
-                while (listPlayerCards.Sum(c => c.CardValues.Sum()) < 21 && playersInput != "s")
+                while (listPlayerCards.SumCardValues() < 21 && playersInput != "s")
                 {
                     playersInput = OfferPlayerAChoiceAndGetInput("[h]it or [s]tay?");
 
                     if (playersInput == "h")
                     {
                         listPlayerCards.Add(dealer.DealCard(faceUp: true));
-                        Console.WriteLine("Your cards are: " + string.Join(',', listPlayerCards.Select(card => card.CardFace)));
+                        Console.WriteLine("Your cards are: " + string.Join(',', listPlayerCards.Select(card => card.CardFace)).Pastel("#ff59c7"));
                     }
                 }
 
-                if (listPlayerCards.Sum(c => c.CardValues.Sum()) > 21)
+                if (listPlayerCards.SumCardValues() > 21)
                 {
-                    Console.WriteLine("You are bust °º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸");
+                    Console.WriteLine("You are bust °º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸".Pastel("#ff9994"));
 
                     playersInput = OfferPlayerAChoiceAndGetInput("Would you like to make another bet? [y]es or [n]o");
 
@@ -72,7 +76,7 @@ namespace ConsoleBlackjack
 
                 // engage dealer
                 listDealerCards.Single(c => !c.IsCardFaceUp).IsCardFaceUp = true;
-                Console.WriteLine("The dealer's cards are: " + string.Join(',', listDealerCards.Select(card => card.CurrentCardAspect)));
+                Console.WriteLine("The dealer's cards are: " + string.Join(',', listDealerCards.Select(card => card.CurrentCardAspect)).Pastel("#1E90FF"));
 
                 while (sumOfDealerCards < sumOfPlayersCards)
                 {
@@ -80,13 +84,13 @@ namespace ConsoleBlackjack
                     Console.WriteLine("The dealer deals himself a card.");
                     Thread.Sleep(1000);
                     listDealerCards.Add(dealer.DealCard(true));
-                    Console.WriteLine("The dealers cards are: " + string.Join(',', listDealerCards.Select(card => card.CardFace)));
-                    sumOfDealerCards = listDealerCards.Sum(c => c.CardValues.Sum());
+                    Console.WriteLine("The dealers cards are: " + string.Join(',', listDealerCards.Select(card => card.CardFace)).Pastel("#1E90FF"));
+                    sumOfDealerCards = listDealerCards.SumCardValues();
                 }
 
                 if (sumOfPlayersCards > sumOfDealerCards || sumOfDealerCards > 21)
                 {
-                    Console.WriteLine("You win!");
+                    Console.WriteLine("You win!".Pastel("#ff59c7"));
                     // TODO: payout
                 }
                 else
@@ -107,15 +111,22 @@ namespace ConsoleBlackjack
 
         public class BlackjackHand : List<FrenchCard>
         {
-            // TODO: sum the values but treat Ace with lower value in case of bust
-            //public int Sum()
-            //{
-            //    var sum = 0;
-            //    foreach (var card in this)
-            //    {
-            //        sum += card.c
-            //    }
-            //}
+            public int SumCardValues()
+            {
+                var sum = 0;
+                foreach (var card in this)
+                {
+                    sum += card.CardValues.Max();
+                }
+
+                if (sum > 21 && this.Any(c => c.CardType == CardType.Ace))
+                {
+                    var numberOfAces = this.Count(c => c.CardType == CardType.Ace);
+                    sum -= numberOfAces * 10;
+                }
+
+                return sum;
+            }
         }
 
         private static double AskForBetAmount()
