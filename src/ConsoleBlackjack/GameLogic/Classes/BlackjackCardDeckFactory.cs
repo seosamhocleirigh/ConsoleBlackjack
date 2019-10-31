@@ -49,8 +49,6 @@ namespace ConsoleBlackjack.GameLogic.Classes
                             card = new FrenchCard(cardSuit, cardValue, new int[] { 9 });
                             break;
                         case CardType.Ten:
-                            card = new FrenchCard(cardSuit, cardValue, new int[] { 10 });
-                            break;
                         case CardType.Jack:
                         case CardType.Queen:
                         case CardType.King:
