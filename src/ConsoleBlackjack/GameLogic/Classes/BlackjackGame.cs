@@ -1,7 +1,9 @@
 ﻿using Pastel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 
@@ -11,8 +13,15 @@ namespace ConsoleBlackjack.GameLogic.Classes
     {
         public void Play()
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
             Console.Title = "♠♥♣♦ Blackjack ♠♥♣♦";
+
+            //string path = Server.MapPath("TrackData/vehicle_points.txt");
+            //AppDomain.CurrentDomain.BaseDirectory
+            var text = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Assets\TextFile1.txt", Encoding.UTF8);
+            Console.WriteLine(text);
+            Console.WriteLine();
+
             // TODO: create game in simple format here
             // TODO: write a consoleoutput engine to help write messages to console, including displaying cards, card face up/down etc
             // TODO: write a class that give a game intro, manual, how to play etc
